@@ -43,7 +43,7 @@ min_val = min(audio);
 %         end
 %         diff1 = diff;
 %     end
-%     diff1 = inf; % reset diff1 to a large value
+%     % diff1 = inf; % reset diff1 to a large value
 % end
 %1
 
@@ -227,16 +227,18 @@ Lav = 0;
 for i = 1:columns
     Lav = Lav + prob(i) * length(codes(i).c);
 end
-Efficiency = (H / Lav) * 100; % Corrected efficiency calculation
+Efficiency = (H / Lav) * 100; %  c orrected efficiency calculation
 % Display efficiency
 %disp(['Efficiency of the Huffman code: ', num2str(Efficiency), '%']);
 
-% compression ratio calclation
-original_size = length(audio) * 16; % Assuming 16 bit PCM audio
+% % Compression ratio calculation
+original_size = length(audio) * 32; % assuming 32 bit PCM audio (Size of the overall file - 8 bytes, in bytes (32-bit integer))
 encoded_size = length(encodedsound); % lengths in bits
 compression_ratio = encoded_size/original_size;
-Efficiency = (compression_ratio) * 100;
+Efficiency = (original_size-encoded_size)/original_size * 100;
 
-% display compression ratio
+% Display compression ratio
+disp(['Original Size (bits): ', num2str(original_size)]);
+disp(['Encoded Size (bits): ', num2str(encoded_size)]);
 disp(['Compression Ratio: ', num2str(compression_ratio)]);
-disp(['Efficiency: ', num2str(Efficiency), '%']);
+disp(['Reduction percentage: ', num2str(Efficiency), '%']);

@@ -234,7 +234,7 @@ Efficiency = (H / Lav) * 100; %  c orrected efficiency calculation
 % % Compression ratio calculation
 original_size = length(audio) * 32; % assuming 32 bit PCM audio (Size of the overall file - 8 bytes, in bytes (32-bit integer))
 encoded_size = length(encodedsound); % lengths in bits
-compression_ratio = encoded_size/original_size;
+compression_ratio = original_size/encoded_size;
 Efficiency = (original_size-encoded_size)/original_size * 100;
 
 % Display compression ratio

@@ -165,7 +165,7 @@ end
 
 % Calculating the efficiency of Huffman code for this speech signal
 Efficiency = (H / Lav) * 100;
-disp(['Efficiency of the Huffman code: ', num2str(Efficiency), '%']);
+%disp(['Efficiency of the Huffman code: ', num2str(Efficiency), '%']);
 
 
 % Encoding the speech signal
@@ -229,4 +229,14 @@ for i = 1:columns
 end
 Efficiency = (H / Lav) * 100; % Corrected efficiency calculation
 % Display efficiency
-disp(['Efficiency of the Huffman code: ', num2str(Efficiency), '%']);
+%disp(['Efficiency of the Huffman code: ', num2str(Efficiency), '%']);
+
+% compression ratio calclation
+original_size = length(audio) * 16; % Assuming 16 bit PCM audio
+encoded_size = length(encodedsound); % lengths in bits
+compression_ratio = encoded_size/original_size;
+Efficiency = (compression_ratio) * 100;
+
+% display compression ratio
+disp(['Compression Ratio: ', num2str(compression_ratio)]);
+disp(['Efficiency: ', num2str(Efficiency), '%']);
